@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jinsha My Juju ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink: #ff4d6d;
+            --purple: #7b2cbf;
+            --gold: #ffd700;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #0f0c29, #302b63);
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        /* Glass card */
+        .love-letter {
+            width: 85%;
+            max-width: 600px;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateY(-5deg); }
+            50% { transform: translateY(-20px) rotateY(5deg); }
+        }
+
+        /* Title */
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Gen-Z message */
+        .message {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .highlight {
+            color: var(--pink);
+            font-weight: 600;
+        }
+
+        /* Floating hearts */
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 1.2rem;
+            color: var(--pink);
+            opacity: 0;
+            animation: float-up 8s linear infinite;
+        }
+
+        @keyframes float-up {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.8; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Signature */
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            text-align: right;
+            margin-top: 2rem;
+            color: var(--gold);
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .message { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="love-letter">
+        <div class="hearts" id="hearts"></div>
+        
+        <h1>Jinsha My Juju ❤️</h1>
+        
+        <div class="message">
+            <p><span class="highlight">No cap</span>, you're my whole vibe. Like actually... my heart does the 🦋 <span class="highlight">butterfly thing</span> every time I see you. 4 months in and I'm still <span class="highlight">obsessed??</span> Unreal.</p>
+            
+            <p><span class="highlight">Low-key</span> think you broke my brain – in the best way. Can't even 'act normal' around you cuz you make me so <span class="highlight">happy it's embarrassing</span>. Who gave you the right??</p>
+            
+            <p>Let's keep this going <span class="highlight">fr</span>. Picnics > parties, your laugh > any song, and <span class="highlight">us >>> anyone else</span>. Stay my person? 👉👈</p>
+        </div>
+        
+        <div class="signature">Forever yours,<br>[Your Name]</div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        const container = document.getElementById('hearts');
+        for (let i = 0; i < 25; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.animationDuration = `${Math.random() * 8 + 5}s`;
+            heart.style.animationDelay = `${Math.random() * 5}s`;
+            heart.style.fontSize = `${Math.random() * 1 + 0.8}rem`;
+            container.appendChild(heart);
+        }
+
+        // 3D tilt effect
+        const card = document.querySelector('.love-letter');
+        document.addEventListener('mousemove', (e) => {
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+    </script>
+</body>
+</html>
